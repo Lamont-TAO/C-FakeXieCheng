@@ -1,0 +1,35 @@
+[
+  {
+    "id": "fb6d4f10-79ed-4aff-a915-4ce29dc9c7e1",
+    "title": "埃及",
+    "description": "这个项目是埃及",
+    "originalPrice": "1299",
+    "discountPresent": "0.9",
+    "fetures": "null",
+    "fees": "null",
+    "note": "null"
+  }
+
+  //{
+  //  "id": "002",
+  //  "titile": "新加坡",
+  //  "description": "这个项目是新加坡",
+  //  "originalPrice": "1199",
+  //  "discountPresent": "0.8",
+  //  "fetures": "null",
+  //  "fees": "null",
+  //  "note": "null"
+  //},
+
+  //{
+  //  "id": "003",
+  //  "titile": "加拿大",
+  //  "description": "这个项目是加拿大",
+  //  "originalPrice": "999",
+  //  "discountPresent": "0.7",
+  //  "fetures": "null",
+  //  "fees": "null",
+  //  "note": "null"
+  //}
+
+]
