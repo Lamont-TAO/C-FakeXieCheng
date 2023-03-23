@@ -33,11 +33,11 @@ namespace FakeXieCheng.NET3.Controllers
             var touristRoutesFromRepo = _touristRouteRepository.GetTouristRoutes();
             if(touristRoutesFromRepo == null || touristRoutesFromRepo.Count() <= 0)
             {
-                return NotFound("没有旅游路线");
+                return NotFound("没有旅游路线");  //确保返回正确的状态码
             }
             else
             {
-                return Ok(touristRoutesFromRepo);
+                return Ok(touristRoutesFromRepo);  //如果找到就正常输出路线
             }
             
         }
@@ -49,18 +49,18 @@ namespace FakeXieCheng.NET3.Controllers
         /// <param name="touristRouteId"></param>
         /// <returns></returns>
         //如果控制器中的函数不唯一那么url上的访问方式将是：api/touristroutes/{touristRouteId}
-        [HttpGet("{touristRouteId:Guid}")]
+        [HttpGet("{touristRouteId:Guid}")]   //这里加Guid就是在输入端进行筛选，来限制类型，以免发生歧义
         public IActionResult GetTouristRoutesById(Guid touristRouteId)
         {
 
             var touristRouteFromRepo = _touristRouteRepository.GetSingleTouristRoute(touristRouteId);
             if(touristRouteFromRepo == null)
             {
-                return NotFound($"旅游路线{touristRouteId}找不到");
+                return NotFound($"旅游路线{touristRouteId}找不到"); //确保返回正确的状态码
             }
             else
             {
-                return Ok(touristRouteFromRepo);
+                return Ok(touristRouteFromRepo);  //如果找到就正常输出路线
             }
 
             

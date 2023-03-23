@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace FakeXieCheng.NET3
 {
@@ -27,7 +28,11 @@ namespace FakeXieCheng.NET3
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();//有了这句话，MVC的控制器组件就能够在项目中使用了
+            services.AddControllers(setupAction => {          //有了这句话，MVC的控制器组件就能够在项目中使用
+                setupAction.ReturnHttpNotAcceptable = true;   //使访问时候有限制是JSON XML或者其他模式，而不是默认返回
+                setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()  //添加对xml格式的输出支持
+                );
+            }).AddXmlDataContractSerializerFormatters();
             //services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>();//services这个服务很可能在很多地方都会被使用，所以要在这里注入依赖<a,b>a是接口，b是实现类
             services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();//services这个服务很可能在很多地方都会被使用，所以要在这里注入依赖<a,b>a是接口，b是实现类
             //services.AddSingleton
